@@ -27,10 +27,16 @@ Place HTML code and execute JQuery function
 (function ($) {
   $.fn.createHorizontalOverflow = function () {
     var width = 0;
-    this.find('.containers').children('div').each(function () {
-      width += $(this).outerWidth(true);
+    this.find('.containers').each(function ()
+    {
+      var width = 0;
+      $(this).find('.each').each(function () {
+        width += $(this).outerWidth(true);
+      }).promise().done(function () {
+        var container = $(this).parent('.containers');
+        container.css('width', width + "px");
+      });
     });
-    this.find('.containers').css('width', width + "px");
   };
 }(jQuery));
 // Execute when page is ready
