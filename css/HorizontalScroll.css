@@ -1,0 +1,14 @@
+.overflow {
+	width: 100%;
+	overflow-x: scroll;
+	overflow-y: hidden;
+}
+
+.overflow::-webkit-scrollbar {
+	display: none;
+}
+
+.overflow .containers .each {
+	border: none;
+	float: left;
+}

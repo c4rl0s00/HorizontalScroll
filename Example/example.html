@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+<head>
+	<title>SimpleHorizontalScrollableDiv</title>
+	<meta name="author" content="Carlos Gutierrez (c4rl0s00)">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<style>
+		/*
+		*	Minimal CSS
+		*/
+		.overflow {
+			width: 100%;
+			overflow-x: scroll;
+			overflow-y: hidden;
+		}
+
+		.overflow::-webkit-scrollbar {
+			display: none;
+		}
+
+		.overflow .containers .each {
+			border: none;
+			float: left;
+		}
+
+		/*
+		*	Example 1
+		*/
+		.button {
+			height: 80px;
+			width: 120px;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 80px;
+			padding: 5px;
+		}
+
+		.wide {
+			width: 300px;
+		}
+
+		/*
+		*	Colors
+		*/
+		.red {
+			background-color: crimson;
+		}
+
+		.blue {
+			background-color: cornflowerblue;
+		}
+
+		.green {
+			background-color: darkseagreen;
+		}
+
+		.yellow {
+			background-color: darkorange;
+		}
+
+		/*
+		*	Cardboard
+		*/
+		.cardboard {
+			width: 200px;
+			height: 100px;
+			margin: 0px 5px 0px 5px;
+			border-radius: 10px;
+			padding: 10px;
+			background-position: center center;
+			background-size: cover;
+		}
+
+		.cardboard .title {
+			font-family: sans-serif;
+			line-height: 200px;
+			color: white;
+		}
+
+	</style>
+	<script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
+	<script>
+		(function ($) {
+			$.fn.createHorizontalOverflow = function () {
+				var width = 0;
+				this.find('.containers').children('div').each(function () {
+					width += $(this).outerWidth(true);
+				});
+				this.find('.containers').css('width', width + "px");
+			};
+		}(jQuery));
+
+		$(document).ready(function () {
+			$('div.overflow').createHorizontalOverflow();
+		});
+	</script>
+</head>
+
+<body>
+	<div class="view">
+		<header>
+			<h1>Horizontal Scroll</h1>
+		</header>
+
+		<div class="pages">
+
+			<div class="panel" data-title="By" id="item1">
+				<!-- MINIMAL -->
+				<div class="overflow">
+					<div class="containers">
+						<div class="each">
+							ONE-
+						</div>
+						<div class="each">
+							TWO-
+						</div>
+						<div class="each">
+							THREE-
+						</div>
+						<div class="each">
+							FOUR-
+						</div>
+						<div class="each">
+							FIVE-
+						</div>
+						<div class="each">
+							SIX-
+						</div>
+						<div class="each">
+							SEVEN-
+						</div>
+						<div class="each">
+							EIGHT-
+						</div>
+						<div class="each">
+							NINE-
+						</div>
+					</div>
+				</div>
+				<!-- END MINIMAL -->
+				<br>
+				<!-- SIMPLE EXAMPLE 1 -->
+				<div class="overflow">
+					<div class="containers">
+						<div class="each wide red">
+							ABCDE
+						</div>
+						<div class="each wide blue">
+							WXYZ
+						</div>
+						<div class="each wide yellow">
+							IJKL
+						</div>
+						<div class="each wide green">
+							ABCDE
+						</div>
+					</div>
+				</div>
+				<!-- END SIMPLE EXAMPLE 1 -->
+				<br>
+				<!-- EXAMPLE 2 (Rectangles) -->
+				<div class="overflow">
+					<div class="containers">
+						<div class="each">
+							<div class="button red">Button A</div>
+						</div>
+						<div class="each">
+							<div class="button blue">Button B</div>
+						</div>
+						<div class="each">
+							<div class="button green">Button C</div>
+						</div>
+						<div class="each">
+							<div class="button yellow">Button D</div>
+						</div>
+					</div>
+				</div>
+				<!-- END EXAMPLE 2 (Rectangles) -->
+				<br>
+				<!-- EXAMPLE 3 (Nav with images on cardboard) -->
+				<div class="overflow">
+					<div class="containers">
+						<div class="each">
+							<div class="cardboard" style="background-image: url('http://www.hyderabadtourism.travel/images/packages/hyderabad/1-day-hyderabad-city-tour-by-car-small.jpg')">
+								<div class="title">Lorem ipsum</div>
+							</div>
+						</div>
+						<div class="each">
+							<div class="cardboard" style="background-image: url('http://adcstatic.com/imagenes/destinos/k/alquiler-coches-kansas-city.jpg')">
+								<div class="title">Dolor sit amet</div>
+							</div>
+						</div>
+						<div class="each">
+							<div class="cardboard" style="background-image: url('https://www.explorica.com/-/media/Images/Tour%20Pictures/destinations/mcy.ashx')">
+								<div class="title">Consectetur adipiscing</div>
+							</div>
+						</div>
+						<div class="each">
+							<div class="cardboard" style="background-image: url('https://www.explorica.com/-/media/Images/Tour%20Pictures/destinations/pcl.ashx')">
+								<div class="title">Elit sed do</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END EXAMPLE 3 (Nav with images on cardboard) -->
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
