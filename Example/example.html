@@ -13,6 +13,7 @@
 		/*
 		*	Minimal CSS
 		*/
+
 		.overflow {
 			width: 100%;
 			overflow-x: scroll;
@@ -23,14 +24,18 @@
 			display: none;
 		}
 
+		.overflow .containers {
+			width: auto;
+		}
+
 		.overflow .containers .each {
 			border: none;
 			float: left;
 		}
-
 		/*
 		*	Example 1
 		*/
+
 		.button {
 			height: 80px;
 			width: 120px;
@@ -43,10 +48,10 @@
 		.wide {
 			width: 300px;
 		}
-
 		/*
 		*	Colors
 		*/
+
 		.red {
 			background-color: crimson;
 		}
@@ -62,10 +67,10 @@
 		.yellow {
 			background-color: darkorange;
 		}
-
 		/*
 		*	Cardboard
 		*/
+
 		.cardboard {
 			width: 200px;
 			height: 100px;
@@ -81,17 +86,33 @@
 			line-height: 200px;
 			color: white;
 		}
+		/*
+		*	RESET NAV PROPERTIES
+		*/
 
+		body {
+			width: 98vw;
+			margin: 0px;
+			padding: 1vw;
+			background-color: #fcfcfc;
+			overflow-y: hidden;
+		}
 	</style>
 	<script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
 	<script>
 		(function ($) {
 			$.fn.createHorizontalOverflow = function () {
 				var width = 0;
-				this.find('.containers').children('div').each(function () {
-					width += $(this).outerWidth(true);
+				this.find('.containers').each(function ()
+				{
+					var width = 0;
+					$(this).find('.each').each(function () {
+						width += $(this).outerWidth(true);
+					}).promise().done(function () {
+						var container = $(this).parent('.containers');
+						container.css('width', width + "px");
+					});
 				});
-				this.find('.containers').css('width', width + "px");
 			};
 		}(jQuery));
 
@@ -113,33 +134,15 @@
 				<!-- MINIMAL -->
 				<div class="overflow">
 					<div class="containers">
-						<div class="each">
-							ONE-
-						</div>
-						<div class="each">
-							TWO-
-						</div>
-						<div class="each">
-							THREE-
-						</div>
-						<div class="each">
-							FOUR-
-						</div>
-						<div class="each">
-							FIVE-
-						</div>
-						<div class="each">
-							SIX-
-						</div>
-						<div class="each">
-							SEVEN-
-						</div>
-						<div class="each">
-							EIGHT-
-						</div>
-						<div class="each">
-							NINE-
-						</div>
+						<div class="each"> ONE- </div>
+						<div class="each"> TWO- </div>
+						<div class="each"> THREE- </div>
+						<div class="each"> FOUR- </div>
+						<div class="each"> FIVE- </div>
+						<div class="each"> SIX- </div>
+						<div class="each"> SEVEN- </div>
+						<div class="each"> EIGHT- </div>
+						<div class="each"> NINE- </div>
 					</div>
 				</div>
 				<!-- END MINIMAL -->
@@ -147,18 +150,10 @@
 				<!-- SIMPLE EXAMPLE 1 -->
 				<div class="overflow">
 					<div class="containers">
-						<div class="each wide red">
-							ABCDE
-						</div>
-						<div class="each wide blue">
-							WXYZ
-						</div>
-						<div class="each wide yellow">
-							IJKL
-						</div>
-						<div class="each wide green">
-							ABCDE
-						</div>
+						<div class="each wide red"> TextOne </div>
+						<div class="each wide blue"> TextTwo </div>
+						<div class="each wide yellow"> TextThree </div>
+						<div class="each wide green"> TextFour </div>
 					</div>
 				</div>
 				<!-- END SIMPLE EXAMPLE 1 -->
@@ -186,23 +181,28 @@
 				<div class="overflow">
 					<div class="containers">
 						<div class="each">
+							<div class="cardboard" style="background-image: url('https://www.explorica.com/-/media/Images/Tour%20Pictures/destinations/mcy.ashx')">
+								<div class="title">M&eacute;xico</div>
+							</div>
+						</div>
+						<div class="each">
 							<div class="cardboard" style="background-image: url('http://www.hyderabadtourism.travel/images/packages/hyderabad/1-day-hyderabad-city-tour-by-car-small.jpg')">
-								<div class="title">Lorem ipsum</div>
+								<div class="title">India</div>
 							</div>
 						</div>
 						<div class="each">
 							<div class="cardboard" style="background-image: url('http://adcstatic.com/imagenes/destinos/k/alquiler-coches-kansas-city.jpg')">
-								<div class="title">Dolor sit amet</div>
-							</div>
-						</div>
-						<div class="each">
-							<div class="cardboard" style="background-image: url('https://www.explorica.com/-/media/Images/Tour%20Pictures/destinations/mcy.ashx')">
-								<div class="title">Consectetur adipiscing</div>
+								<div class="title">U.S.A.</div>
 							</div>
 						</div>
 						<div class="each">
 							<div class="cardboard" style="background-image: url('https://www.explorica.com/-/media/Images/Tour%20Pictures/destinations/pcl.ashx')">
-								<div class="title">Elit sed do</div>
+								<div class="title">France</div>
+							</div>
+						</div>
+						<div class="each">
+							<div class="cardboard" style="background-image: url('01.jpg')">
+								<div class="title">France</div>
 							</div>
 						</div>
 					</div>
